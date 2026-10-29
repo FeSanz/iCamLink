@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ICamLink.Core\ICamLink.Core.csproj" />
+    <!-- LibVLCSharp renders into a WriteableBitmap through video callbacks (no HWND child window),
+         so overlays/rounded corners/drag-and-drop work on top of live video without the WPF
+         "airspace" problem a VideoView would have. VideoLAN.LibVLC.Windows ships the native libvlc. -->
+    <PackageReference Include="LibVLCSharp" Version="3.9.2" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.21" />
+    <Resource Include="Assets\app.ico" />
+    <Resource Include="Assets\app.png" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- Plain net8.0-windows (not the versioned 19041 TFM NotiLink uses): that one makes LibVLCSharp pull the
+         WinUI/WindowsAppSDK flavour, which this WPF app neither needs nor can restore. -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>1.2.0</Version>
+    <RootNamespace>ICamLink.App</RootNamespace>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ICamLink.App/ICamLink.App.csproj" />
+  <Project Path="ICamLink.Core/ICamLink.Core.csproj" />
+</Solution>
